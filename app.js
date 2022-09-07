@@ -162,10 +162,10 @@ function clickHandler(e) {
       resultRef.innerText = "Yay! your birthday is a palindrome!! 🥳🥳";
     } else {
       var [nextCount, nextDate] = getNextPalindromeDate(date);
-      var [prevCount, prevDate] = getPrevPalindromeDate(date);
-      prevCount < nextCount
-        ? (resultRef.innerText = `The nearest palindrome date was ${prevDate.month}-${prevDate.day}-${prevDate.year}, you missed it by ${prevCount} days!`)
-        : (resultRef.innerText = `The nearest palindrome date is ${nextDate.month}-${nextDate.day}-${nextDate.year}, you missed it by ${nextCount} days!`);
+      // var [prevCount, prevDate] = getPrevPalindromeDate(date);
+      // nextCount
+        // ? (resultRef.innerText = `The nearest palindrome date was ${prevDate.month}-${prevDate.day}-${prevDate.year}, you missed it by ${prevCount} days!`)
+        (resultRef.innerText = `The nearest palindrome date is ${nextDate.month}-${nextDate.day}-${nextDate.year}, you missed it by ${nextCount} days!`);
     }
   } else {
     resultRef.innerText = "Please select your birthday";
