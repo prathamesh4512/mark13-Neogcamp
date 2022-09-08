@@ -1,3 +1,7 @@
+var bdayRef = document.querySelector("#bday-input"),
+ showBtnRef = document.querySelector("#show-btn"),
+ prevPlaindrome = document.querySelector("#prev-palindrome"),
+nextPalindrome = document.querySelector("#next-palindrome");
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 function reverseStr(str) {
@@ -79,7 +83,6 @@ function getNextDate(date) {
       month++;
     }
   }
-
   return {
     day,
     month,
@@ -116,7 +119,6 @@ function getNextPalindromeDate(date) {
   var nextDate = getNextDate(date);
 
   while (1) {
-    // var isPalindrome = checkPalindromeForAllDateFormats(nextDate);
     if (checkPalindromeForAllDateFormats(nextDate)) {
       break;
     }
@@ -140,10 +142,6 @@ function getPrevPalindromeDate(date) {
   return [count, prevDate];
 }
 
-var bdayRef = document.querySelector("#bday-input");
-var showBtnRef = document.querySelector("#show-btn");
-var resultRef = document.querySelector("#result");
-
 function clickHandler(e) {
   var bdayStr = bdayRef.value;
 
@@ -159,16 +157,17 @@ function clickHandler(e) {
     var isPalindrome = checkPalindromeForAllDateFormats(date);
 
     if (isPalindrome) {
-      resultRef.innerText = "Yay! your birthday is a palindrome!! 🥳🥳";
+      prevPlaindrome.innerText = "Yay! your birthday is a palindrome!! 🥳🥳";
+      nextPalindrome.innerText="";
     } else {
       var [nextCount, nextDate] = getNextPalindromeDate(date);
-      // var [prevCount, prevDate] = getPrevPalindromeDate(date);
+      var [prevCount, prevDate] = getPrevPalindromeDate(date);
       // nextCount
-        // ? (resultRef.innerText = `The nearest palindrome date was ${prevDate.month}-${prevDate.day}-${prevDate.year}, you missed it by ${prevCount} days!`)
-        (resultRef.innerText = `The nearest palindrome date is ${nextDate.month}-${nextDate.day}-${nextDate.year}, you missed it by ${nextCount} days!`);
+        (prevPlaindrome.innerText = `The previous palindrome date was ${prevDate.month}-${prevDate.day}-${prevDate.year}, you missed it by ${prevCount} ${prevCount===1?"day":"days"}!`)
+        (nextPalindrome.innerText = `The next palindrome date is ${nextDate.month}-${nextDate.day}-${nextDate.year}, you missed it by ${nextCount} ${nextCount===1?"day":"days"}!`);
     }
   } else {
-    resultRef.innerText = "Please select your birthday";
+    prevPlaindrome.innerText = "Please select your birthday";
   }
 }
 

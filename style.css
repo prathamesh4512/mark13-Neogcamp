@@ -63,7 +63,7 @@ input {
   display: block;
 }
 
-#result {
+#prev-palindrome,#next-palindrome {
   font-size: 1.5rem;
   margin: 2rem 0;
 }
